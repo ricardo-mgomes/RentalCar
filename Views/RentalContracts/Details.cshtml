@@ -1,0 +1,29 @@
+﻿@model RentalCar.Models.RentalContract
+
+@{
+    ViewData["Title"] = "Detalhes do Contrato";
+}
+
+<h1>Detalhes do Contrato</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-3">Cliente</dt>
+        <dd class="col-sm-9">@Model.Client.NomeCompleto</dd>
+
+        <dt class="col-sm-3">Veículo</dt>
+        <dd class="col-sm-9">@Model.Vehicle.Matricula</dd>
+
+        <dt class="col-sm-3">Data Início</dt>
+        <dd class="col-sm-9">@Model.DataInicio.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Data Fim</dt>
+        <dd class="col-sm-9">@Model.DataFim.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Km Inicial</dt>
+        <dd class="col-sm-9">@Model.QuilometragemInicial</dd>
+    </dl>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Voltar</a>

@@ -1,0 +1,63 @@
+﻿@model RentalCar.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Adicionar Veículo";
+}
+
+<h1 class="mb-4 text-danger fw-bold">Adicionar Veículo</h1>
+
+<div class="card shadow-sm p-4">
+    <form asp-action="Create" method="post">
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Marca" class="form-label fw-semibold"></label>
+                <input asp-for="Marca" class="form-control" />
+                <span asp-validation-for="Marca" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Modelo" class="form-label fw-semibold"></label>
+                <input asp-for="Modelo" class="form-control" />
+                <span asp-validation-for="Modelo" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Matricula" class="form-label fw-semibold"></label>
+                <input asp-for="Matricula" class="form-control" />
+                <span asp-validation-for="Matricula" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="AnoFabricacao" class="form-label fw-semibold"></label>
+                <input asp-for="AnoFabricacao" class="form-control" />
+                <span asp-validation-for="AnoFabricacao" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <label asp-for="Combustivel" class="form-label fw-semibold"></label>
+
+                <select asp-for="Combustivel" class="form-select" asp-items="Html.GetEnumSelectList<CombustivelTipo>()">
+                    <option value="">-- Selecione --</option>
+                </select>
+
+
+                <span asp-validation-for="Combustivel" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <button class="btn btn-success px-4" type="submit">Guardar</button>
+            <a asp-action="Index" class="btn btn-secondary px-4">Voltar</a>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

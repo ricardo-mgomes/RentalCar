@@ -1,0 +1,66 @@
+﻿@model IEnumerable<RentalCar.Models.Vehicle>
+@using System.ComponentModel.DataAnnotations
+@using System.Reflection
+
+@functions {
+    public string GetEnumDisplayName(Enum value)
+    {
+        var field = value.GetType().GetField(value.ToString());
+        var attribute = field.GetCustomAttribute<DisplayAttribute>();
+        return attribute?.Name ?? value.ToString();
+    }
+}
+
+<h2 class="d-flex justify-content-between align-items-center">
+    Lista de Veículos
+
+    <a class="btn btn-outline-danger custom-add-btn" href="/Vehicles/Create">
+        Adicionar Veículo
+    </a>
+</h2>
+
+<style>
+    .custom-add-btn {
+        background-color: #ffffff !important;
+        color: #c40000 !important;
+        border: 2px solid #c40000 !important;
+        font-weight: 600;
+    }
+
+        .custom-add-btn:hover {
+            background-color: #c40000 !important;
+            color: #ffffff !important;
+        }
+</style>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Matrícula</th>
+            <th>Ano</th>
+            <th>Combustível</th>
+            <th>Estado</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var v in Model)
+        {
+            <tr>
+                <td>@v.Marca</td>
+                <td>@v.Modelo</td>
+                <td>@v.Matricula</td>
+                <td>@v.AnoFabricacao</td>
+                <td>@GetEnumDisplayName(v.Combustivel)</td>
+                <td>@(v.EstaAlugado ? "Alugado" : "Disponível")</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" href="/Vehicles/Edit/@v.Id">Editar</a>
+                    <a class="btn btn-sm btn-info" href="/Vehicles/Details/@v.Id">Detalhes</a>
+                    <a class="btn btn-sm btn-danger" href="/Vehicles/Delete/@v.Id">Apagar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

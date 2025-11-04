@@ -1,0 +1,28 @@
+﻿@model RentalCar.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Apagar Veículo";
+}
+
+<h1>Apagar Veículo</h1>
+
+<h3>Tens a certeza que queres apagar este veículo?</h3>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-3">Marca</dt>
+        <dd class="col-sm-9">@Model.Marca</dd>
+
+        <dt class="col-sm-3">Modelo</dt>
+        <dd class="col-sm-9">@Model.Modelo</dd>
+
+        <dt class="col-sm-3">Matrícula</dt>
+        <dd class="col-sm-9">@Model.Matricula</dd>
+    </dl>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Apagar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

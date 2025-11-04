@@ -1,0 +1,17 @@
+﻿<dl class="row">
+    <dt class="col-sm-2">Nome Completo</dt>
+    <dd class="col-sm-10">@Model.NomeCompleto</dd>
+
+    <dt class="col-sm-2">Email</dt>
+    <dd class="col-sm-10">@Model.Email</dd>
+
+    <dt class="col-sm-2">Telefone</dt>
+    <dd class="col-sm-10">@Model.Telefone</dd>
+
+    <dt class="col-sm-2">Carta de Condução</dt>
+    <dd class="col-sm-10">
+        @(
+                Model.CartaConducao ? "Sim" : "Não"
+                )
+    </dd>
+</dl>
